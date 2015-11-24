@@ -20,12 +20,12 @@ public class UsersService {
     /**
      * Login method. Test password against encoded password in database.
      *
-     * @param userId : id of the user who tries to log in
+     * @param email : email of the user who tries to log in
      * @param password : raw password
      * @return
      */
-    public boolean login(Long userId, String password) {
-        User user = userDao.findOne(userId);
+    public boolean login(String email, String password) {
+        User user = userDao.findByEmail(email);
         if (user == null) {
             throw new IllegalArgumentException("User does not exist");
         }

@@ -19,7 +19,7 @@ public class UsersRestController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Boolean login(@RequestBody LoginRequestDTO request) {
-        return usersService.login(request.getUserId(), request.getPassword());
+        return usersService.login(request.getEmail(), request.getPassword());
     }
 
 }

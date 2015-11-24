@@ -20,19 +20,19 @@ public class UsersServiceTest {
 
     @Test
     public void testLoginSuccess() {
-        boolean result = usersService.login((long) 1, "test");
+        boolean result = usersService.login("test@takeneat.com", "test");
         Assert.assertTrue(result);
     }
 
     @Test
     public void testLoginFailed() {
-        boolean result = usersService.login((long) 1, "wrongpass");
+        boolean result = usersService.login("test@takeneat.com", "wrongpass");
         Assert.assertFalse(result);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testUserDoesNotExist() {
-        usersService.login((long) -1, "test");
+        usersService.login("falsemail@takeneat.com", "test");
         Assert.fail();
     }
 
