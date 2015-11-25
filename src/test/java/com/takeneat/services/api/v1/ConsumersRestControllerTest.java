@@ -1,7 +1,7 @@
 package com.takeneat.services.api.v1;
 
-import com.takeneat.services.orders.dto.OrderDTO;
-import com.takeneat.services.orders.dto.OrderRequestDTO;
+import com.takeneat.services.api.v1.dto.OrderDTO;
+import com.takeneat.services.api.v1.dto.OrderRequestDTO;
 import com.takeneat.services.test.AbstractWebIntegrationTest;
 import com.takeneat.services.test.Constants;
 import org.junit.Assert;

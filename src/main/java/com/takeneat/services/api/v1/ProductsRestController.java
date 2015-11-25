@@ -1,6 +1,7 @@
-package com.takeneat.services.products;
+package com.takeneat.services.api.v1;
 
-import com.takeneat.services.products.dto.ProductDTO;
+import com.takeneat.services.products.ProductsService;
+import com.takeneat.services.api.v1.dto.ProductDTO;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.takeneat.services.orders.dto;
+package com.takeneat.services.api.v1.dto;
 
 /**
  * @author paoesco

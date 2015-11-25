@@ -1,6 +1,7 @@
-package com.takeneat.services.users;
+package com.takeneat.services.api.v1;
 
-import com.takeneat.services.users.dto.LoginRequestDTO;
+import com.takeneat.services.api.v1.dto.LoginRequestDTO;
+import com.takeneat.services.users.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

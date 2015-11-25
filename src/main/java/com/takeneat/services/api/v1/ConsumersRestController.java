@@ -1,8 +1,8 @@
 package com.takeneat.services.api.v1;
 
 import com.takeneat.services.orders.OrdersService;
-import com.takeneat.services.orders.dto.OrderDTO;
-import com.takeneat.services.orders.dto.OrderRequestDTO;
+import com.takeneat.services.api.v1.dto.OrderDTO;
+import com.takeneat.services.api.v1.dto.OrderRequestDTO;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;

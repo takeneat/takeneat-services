@@ -1,7 +1,7 @@
-package com.takeneat.services.users;
+package com.takeneat.services.api.v1;
 
 import com.takeneat.services.test.AbstractWebIntegrationTest;
-import com.takeneat.services.users.dto.LoginRequestDTO;
+import com.takeneat.services.api.v1.dto.LoginRequestDTO;
 import org.junit.Assert;
 import org.junit.Test;
 
