@@ -1,6 +1,7 @@
 package com.takeneat.services.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author paoesco
@@ -21,11 +24,18 @@ public class Order implements Serializable {
     @Column(name = "ID")
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "USER_ID", nullable = false)
-    private User user;
+    @JoinColumn(name = "CONSUMER_ID", nullable = false)
+    private User consumer;
     @ManyToOne
     @JoinColumn(name = "PRODUCT_ID", nullable = false)
     private Product product;
+    @Column(name = "CREATION_DATE", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date creationDate;
+
+    public Order() {
+        this.creationDate = new Date();
+    }
 
     public Long getId() {
         return id;
@@ -35,12 +45,12 @@ public class Order implements Serializable {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public User getConsumer() {
+        return consumer;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setConsumer(User consumer) {
+        this.consumer = consumer;
     }
 
     public Product getProduct() {
@@ -49,6 +59,14 @@ public class Order implements Serializable {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
 }

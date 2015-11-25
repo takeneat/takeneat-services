@@ -31,7 +31,7 @@ public class Product implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date postedDate;
     @ManyToOne
-    @JoinColumn(name = "USER_ID", nullable = false)
+    @JoinColumn(name = "COOK_ID", nullable = false)
     private User user;
 
     public Long getId() {
