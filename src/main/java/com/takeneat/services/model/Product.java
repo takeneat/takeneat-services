@@ -27,12 +27,16 @@ public class Product implements Serializable {
     private String name;
     @Column(name = "PRICE", nullable = false)
     private Double price;
-    @Column(name = "POSTED_DATE", nullable = false)
+    @Column(name = "CREATION_DATE", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date postedDate;
+    private Date creationDate;
     @ManyToOne
     @JoinColumn(name = "COOK_ID", nullable = false)
-    private User user;
+    private User cook;
+
+    public Product() {
+        this.creationDate = new Date();
+    }
 
     public Long getId() {
         return id;
@@ -58,20 +62,20 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-    public Date getPostedDate() {
-        return postedDate;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
-    public void setPostedDate(Date postedDate) {
-        this.postedDate = postedDate;
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
-    public User getUser() {
-        return user;
+    public User getCook() {
+        return cook;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCook(User cook) {
+        this.cook = cook;
     }
 
 }

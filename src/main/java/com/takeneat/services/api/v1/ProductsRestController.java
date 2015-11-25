@@ -30,10 +30,10 @@ public class ProductsRestController {
                 .map(p -> {
                     ProductDTO dto = new ProductDTO();
                     dto.setId(p.getId());
-                    dto.setCook(p.getUser().getFirstname() + " " + p.getUser().getLastname());
+                    dto.setCook(p.getCook().getFirstname() + " " + p.getCook().getLastname());
                     dto.setName(p.getName());
                     dto.setPrice(p.getPrice());
-                    dto.setPostedDate(p.getPostedDate().toString());
+                    dto.setPostedDate(p.getCreationDate().toString());
                     return dto;
                 }).collect(Collectors.toList());
 

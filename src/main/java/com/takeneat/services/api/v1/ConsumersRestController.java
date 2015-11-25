@@ -37,7 +37,7 @@ public class ConsumersRestController {
                 .stream()
                 .map(o -> {
                     OrderDTO dto = new OrderDTO();
-                    dto.setCook(o.getProduct().getUser().getFirstname() + " " + o.getProduct().getUser().getLastname());
+                    dto.setCook(o.getProduct().getCook().getFirstname() + " " + o.getProduct().getCook().getLastname());
                     dto.setOrderId(o.getId());
                     dto.setProductId(o.getProduct().getId());
                     dto.setProductName(o.getProduct().getName());
