@@ -16,7 +16,7 @@ public class CooksRestControllerTest extends AbstractWebIntegrationTest {
         CreateProductRequestDTO request = new CreateProductRequestDTO();
         request.setName("Eggs");
         request.setPrice(6.55);
-        Long productId = restTemplate.postForObject(getPathV1() + "/cooks/" + TestConstants.COOK_ID + "/products", request, Long.class);
+        Long productId = restTemplate.postForObject(getPathV1() + "/cooks/" + TestConstants.COOK_2_ID + "/products", request, Long.class);
         Assert.assertNotNull(productId);
     }
 
