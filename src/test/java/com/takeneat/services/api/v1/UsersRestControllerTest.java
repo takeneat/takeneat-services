@@ -15,7 +15,7 @@ public class UsersRestControllerTest extends AbstractWebIntegrationTest {
         LoginRequestDTO request = new LoginRequestDTO();
         request.setEmail("test@takeneat.com");
         request.setPassword("test");
-        Boolean result = restTemplate.postForObject(getBaseurl() + "/users/login", request, Boolean.class);
+        Boolean result = restTemplate.postForObject(getPathV1() + "/users/login", request, Boolean.class);
         Assert.assertTrue(result);
     }
 
@@ -24,7 +24,7 @@ public class UsersRestControllerTest extends AbstractWebIntegrationTest {
         LoginRequestDTO request = new LoginRequestDTO();
         request.setEmail("test@takeneat.com");
         request.setPassword("wrongpassword");
-        Boolean result = restTemplate.postForObject(getBaseurl() + "/users/login", request, Boolean.class);
+        Boolean result = restTemplate.postForObject(getPathV1() + "/users/login", request, Boolean.class);
         Assert.assertFalse(result);
     }
 

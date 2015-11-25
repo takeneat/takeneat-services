@@ -1,7 +1,9 @@
 package com.takeneat.services.api.v1;
 
+import com.takeneat.services.api.utils.ApiConstants;
 import com.takeneat.services.products.ProductsService;
 import com.takeneat.services.api.v1.dto.ProductDTO;
+import io.swagger.annotations.Api;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author paoesco
  */
+@Api
 @RestController
-@RequestMapping("/products")
+@RequestMapping(ApiConstants.PATH_V1 + "/products")
 public class ProductsRestController {
 
     @Autowired

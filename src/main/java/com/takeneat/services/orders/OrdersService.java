@@ -24,7 +24,7 @@ public class OrdersService {
     private UserDao userDao;
 
     @Transactional
-    public Long newOrder(long consumerId, long productId) {
+    public Long create(long consumerId, long productId) {
         Product product = productDao.findOne(productId);
         User consumer = userDao.findOne(consumerId);
         Order order = new Order();

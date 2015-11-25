@@ -1,6 +1,7 @@
 package com.takeneat.services.test;
 
 import com.takeneat.services.Boot;
+import com.takeneat.services.api.utils.ApiConstants;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -22,8 +23,12 @@ public class AbstractWebIntegrationTest {
 
     protected RestTemplate restTemplate = new TestRestTemplate();
 
-    protected String getBaseurl() {
+    private String getBaseurl() {
         return "http://localhost:" + port;
+    }
+
+    protected String getPathV1() {
+        return getBaseurl() + ApiConstants.PATH_V1;
     }
 
 }

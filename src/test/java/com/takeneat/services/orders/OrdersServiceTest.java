@@ -25,7 +25,7 @@ public class OrdersServiceTest {
 
     @Test
     public void testCreate() {
-        Long orderId = ordersService.newOrder(Constants.CONSUMER_ID, Constants.LASAGNA_PRODUCT_ID);
+        Long orderId = ordersService.create(Constants.CONSUMER_ID, Constants.LASAGNA_PRODUCT_ID);
         Assert.assertNotNull(orderId);
         Order order = orderDao.findOne(orderId);
         Assert.assertNotNull(order);

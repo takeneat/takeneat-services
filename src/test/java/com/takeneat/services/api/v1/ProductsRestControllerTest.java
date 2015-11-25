@@ -12,7 +12,7 @@ public class ProductsRestControllerTest extends AbstractWebIntegrationTest {
 
     @Test
     public void testSearch() {
-        ProductDTO[] results = restTemplate.postForObject(getBaseurl() + "/products/search", null, ProductDTO[].class);
+        ProductDTO[] results = restTemplate.postForObject(getPathV1() + "/products/search", null, ProductDTO[].class);
         Assert.assertNotNull(results);
         Assert.assertEquals(2, results.length);
         for (ProductDTO dto : results){
