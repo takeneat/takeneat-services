@@ -16,6 +16,7 @@ public class UsersRestControllerTest extends AbstractWebIntegrationTest {
         LoginRequestDTO request = new LoginRequestDTO();
         request.setEmail("test@takeneat.com");
         request.setPassword("test");
+        request.setMobileId(TestConstants.MOBILE_ID);
         Long result = restTemplate.postForObject(getPathV1() + "/users/login", request, Long.class);
         Assert.assertNotNull(result);
         Assert.assertEquals(TestConstants.USER_LOGIN_ID, result.longValue());
@@ -26,6 +27,7 @@ public class UsersRestControllerTest extends AbstractWebIntegrationTest {
         LoginRequestDTO request = new LoginRequestDTO();
         request.setEmail("test@takeneat.com");
         request.setPassword("wrongpassword");
+        request.setMobileId(TestConstants.MOBILE_ID);
         Long result = restTemplate.postForObject(getPathV1() + "/users/login", request, Long.class);
         Assert.assertNull(result);
     }
