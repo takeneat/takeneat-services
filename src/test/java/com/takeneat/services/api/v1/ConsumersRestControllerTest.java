@@ -26,5 +26,6 @@ public class ConsumersRestControllerTest extends AbstractWebIntegrationTest {
         Assert.assertNotNull(orders);
         Assert.assertEquals(1, orders.length);
         Assert.assertEquals(TestConstants.SUSHIS_PRODUCT_ID, orders[0].getProductId().longValue());
+        Assert.assertEquals("2015-01-02 02:00:00", orders[0].getCreationDate());
     }
 }

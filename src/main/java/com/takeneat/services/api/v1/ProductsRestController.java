@@ -1,6 +1,7 @@
 package com.takeneat.services.api.v1;
 
 import com.takeneat.services.api.utils.ApiConstants;
+import com.takeneat.services.api.utils.WebServiceUtils;
 import com.takeneat.services.products.ProductsService;
 import com.takeneat.services.api.v1.dto.ProductDTO;
 import io.swagger.annotations.Api;
@@ -33,7 +34,7 @@ public class ProductsRestController {
                     dto.setCook(p.getCook().getFirstname() + " " + p.getCook().getLastname());
                     dto.setName(p.getName());
                     dto.setPrice(p.getPrice());
-                    dto.setPostedDate(p.getCreationDate().toString());
+                    dto.setCreationDate(WebServiceUtils.formatDate(p.getCreationDate()));
                     return dto;
                 }).collect(Collectors.toList());
 

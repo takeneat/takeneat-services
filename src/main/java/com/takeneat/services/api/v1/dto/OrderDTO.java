@@ -10,7 +10,7 @@ public class OrderDTO {
     private String productName;
     private Double productPrice;
     private String cook;
-    private String date;
+    private String creationDate;
 
     public Long getOrderId() {
         return orderId;
@@ -52,12 +52,12 @@ public class OrderDTO {
         this.cook = cook;
     }
 
-    public String getDate() {
-        return date;
+    public String getCreationDate() {
+        return creationDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
     }
 
 }

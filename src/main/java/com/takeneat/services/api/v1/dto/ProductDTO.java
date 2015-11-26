@@ -9,7 +9,7 @@ public class ProductDTO {
     private String name;
     private Double price;
     private String cook;
-    private String postedDate;
+    private String creationDate;
 
     public Long getId() {
         return id;
@@ -43,12 +43,12 @@ public class ProductDTO {
         this.cook = cook;
     }
 
-    public String getPostedDate() {
-        return postedDate;
+    public String getCreationDate() {
+        return creationDate;
     }
 
-    public void setPostedDate(String postedDate) {
-        this.postedDate = postedDate;
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
     }
 
 }

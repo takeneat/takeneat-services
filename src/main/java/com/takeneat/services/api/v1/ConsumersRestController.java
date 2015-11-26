@@ -1,6 +1,7 @@
 package com.takeneat.services.api.v1;
 
 import com.takeneat.services.api.utils.ApiConstants;
+import com.takeneat.services.api.utils.WebServiceUtils;
 import com.takeneat.services.orders.OrdersService;
 import com.takeneat.services.api.v1.dto.OrderDTO;
 import com.takeneat.services.api.v1.dto.OrderRequestDTO;
@@ -42,8 +43,7 @@ public class ConsumersRestController {
                     dto.setProductId(o.getProduct().getId());
                     dto.setProductName(o.getProduct().getName());
                     dto.setProductPrice(o.getProduct().getPrice());
-                    dto.setDate(o.getCreationDate().toString());
-                    // TODO : Date to String
+                    dto.setCreationDate(WebServiceUtils.formatDate(o.getCreationDate()));
                     return dto;
                 })
                 .collect(Collectors.toList());
