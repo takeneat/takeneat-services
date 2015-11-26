@@ -2,6 +2,7 @@ package com.takeneat.services.api.v1;
 
 import com.takeneat.services.test.AbstractWebIntegrationTest;
 import com.takeneat.services.api.v1.dto.LoginRequestDTO;
+import com.takeneat.services.test.TestConstants;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,8 +16,9 @@ public class UsersRestControllerTest extends AbstractWebIntegrationTest {
         LoginRequestDTO request = new LoginRequestDTO();
         request.setEmail("test@takeneat.com");
         request.setPassword("test");
-        Boolean result = restTemplate.postForObject(getPathV1() + "/users/login", request, Boolean.class);
-        Assert.assertTrue(result);
+        Long result = restTemplate.postForObject(getPathV1() + "/users/login", request, Long.class);
+        Assert.assertNotNull(result);
+        Assert.assertEquals(TestConstants.USER_LOGIN_ID, result.longValue());
     }
 
     @Test
@@ -24,8 +26,8 @@ public class UsersRestControllerTest extends AbstractWebIntegrationTest {
         LoginRequestDTO request = new LoginRequestDTO();
         request.setEmail("test@takeneat.com");
         request.setPassword("wrongpassword");
-        Boolean result = restTemplate.postForObject(getPathV1() + "/users/login", request, Boolean.class);
-        Assert.assertFalse(result);
+        Long result = restTemplate.postForObject(getPathV1() + "/users/login", request, Long.class);
+        Assert.assertNull(result);
     }
 
 }

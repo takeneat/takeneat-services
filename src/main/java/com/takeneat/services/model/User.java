@@ -26,6 +26,8 @@ public class User implements Serializable {
     private String firstname;
     @Column(name = "LASTNAME", nullable = false)
     private String lastname;
+    @Column(name = "MOBILE_ID")
+    private String mobileId;
 
     public Long getId() {
         return id;
@@ -65,6 +67,14 @@ public class User implements Serializable {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public String getMobileId() {
+        return mobileId;
+    }
+
+    public void setMobileId(String mobileId) {
+        this.mobileId = mobileId;
     }
 
 }

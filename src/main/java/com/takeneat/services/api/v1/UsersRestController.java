@@ -23,7 +23,7 @@ public class UsersRestController {
     private UsersService usersService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Boolean login(@RequestBody LoginRequestDTO request) {
+    public Long login(@RequestBody LoginRequestDTO request) {
         return usersService.login(request.getEmail(), request.getPassword());
     }
 

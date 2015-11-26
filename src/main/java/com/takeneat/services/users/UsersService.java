@@ -24,13 +24,16 @@ public class UsersService {
      * @param password : raw password
      * @return
      */
-    public boolean login(String email, String password) {
+    public Long login(String email, String password) {
         User user = userDao.findByEmail(email);
         if (user == null) {
             throw new IllegalArgumentException("User does not exist");
         }
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        return passwordEncoder.matches(password, user.getPassword());
+        if (passwordEncoder.matches(password, user.getPassword())) {
+            return user.getId();
+        }
+        return null;
     }
 
 }

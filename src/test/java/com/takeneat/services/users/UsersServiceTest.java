@@ -1,6 +1,7 @@
 package com.takeneat.services.users;
 
 import com.takeneat.services.test.AbstractServiceTest;
+import com.takeneat.services.test.TestConstants;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +16,15 @@ public class UsersServiceTest extends AbstractServiceTest {
 
     @Test
     public void testLoginSuccess() {
-        boolean result = usersService.login("test@takeneat.com", "test");
-        Assert.assertTrue(result);
+        Long result = usersService.login("test@takeneat.com", "test");
+        Assert.assertNotNull(result);
+        Assert.assertEquals(TestConstants.USER_LOGIN_ID, result.longValue());
     }
 
     @Test
     public void testLoginFailed() {
-        boolean result = usersService.login("test@takeneat.com", "wrongpass");
-        Assert.assertFalse(result);
+        Long result = usersService.login("test@takeneat.com", "wrongpass");
+        Assert.assertNull(result);
     }
 
     @Test(expected = IllegalArgumentException.class)
