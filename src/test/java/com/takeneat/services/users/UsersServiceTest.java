@@ -3,6 +3,7 @@ package com.takeneat.services.users;
 import com.takeneat.services.model.User;
 import com.takeneat.services.test.AbstractServiceTest;
 import com.takeneat.services.test.TestConstants;
+import javax.persistence.EntityNotFoundException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,21 @@ public class UsersServiceTest extends AbstractServiceTest {
     public void testUserDoesNotExist() {
         usersService.login("falsemail@takeneat.com", "test", TestConstants.MOBILE_ID);
         Assert.fail();
+    }
+
+    @Test
+    public void getUserKO() {
+        User user = usersService.get(-1);
+        Assert.assertNull(user);
+    }
+
+    @Test
+    public void getUserOK() {
+        User user = usersService.get(TestConstants.COOK_ID);
+        Assert.assertNotNull(user);
+        Assert.assertEquals(TestConstants.COOK_ID, user.getId().longValue());
+        Assert.assertEquals("cook@takeneat.com", user.getEmail());
+
     }
 
 }
