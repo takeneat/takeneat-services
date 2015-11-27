@@ -47,8 +47,17 @@ public class CooksRestControllerTest extends AbstractWebIntegrationTest {
         OrderDTO[] orders = restTemplate.getForObject(getPathV1() + "/cooks/" + TestConstants.COOK_3_ID + "/orders", OrderDTO[].class);
         Assert.assertNotNull(orders);
         Assert.assertEquals(1, orders.length);
-        Assert.assertEquals(TestConstants.TORTILLA_PRODUCT_ID, orders[0].getProductId().longValue());
-        Assert.assertEquals("2015-01-02 02:00:00", orders[0].getCreationDate());
+        OrderDTO order = orders[0];
+        Assert.assertNotNull(order.getOrderId());
+        Assert.assertEquals(TestConstants.TORTILLA_PRODUCT_ID, order.getProductId().longValue());
+        Assert.assertEquals("Tortilla", order.getProductName());
+        Assert.assertEquals(5.50, order.getProductPrice(), 0);
+        Assert.assertEquals(TestConstants.COOK_3_ID, order.getCookId().longValue());
+        Assert.assertEquals("Cook firstname Cook lastname", order.getCookName());
+        Assert.assertEquals(TestConstants.CONSUMER_3_ID, order.getConsumerId().longValue());
+        Assert.assertEquals("Consumer firstname Consumer lastname", order.getConsumerName());
+        Assert.assertEquals("2015-01-02 02:00:00", order.getCreationDate());
+
     }
 
 }

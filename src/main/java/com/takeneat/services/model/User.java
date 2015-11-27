@@ -77,4 +77,13 @@ public class User implements Serializable {
         this.mobileId = mobileId;
     }
 
+    /**
+     * Combination of firstname and lastname with a space in between.
+     *
+     * @return
+     */
+    public String getFullname() {
+        return firstname + " " + lastname;
+    }
+
 }

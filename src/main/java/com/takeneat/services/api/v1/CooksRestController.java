@@ -41,15 +41,8 @@ public class CooksRestController {
         return ordersService
                 .getCookOrders(cookId)
                 .stream()
-                .map(o -> {
-                    OrderDTO dto = new OrderDTO();
-                    dto.setCook(o.getProduct().getCook().getFirstname() + " " + o.getProduct().getCook().getLastname());
-                    dto.setOrderId(o.getId());
-                    dto.setProductId(o.getProduct().getId());
-                    dto.setProductName(o.getProduct().getName());
-                    dto.setProductPrice(o.getProduct().getPrice());
-                    dto.setCreationDate(WebServiceUtils.formatDate(o.getCreationDate()));
-                    return dto;
+                .map(order -> {
+                    return new OrderDTO(order);
                 })
                 .collect(Collectors.toList());
     }
