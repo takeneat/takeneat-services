@@ -1,11 +1,14 @@
 package com.takeneat.services.api.v1;
 
+import com.takeneat.services.api.exceptions.ExceptionDTO;
 import com.takeneat.services.api.v1.dto.OrderDTO;
 import com.takeneat.services.api.v1.dto.OrderRequestDTO;
 import com.takeneat.services.test.AbstractWebIntegrationTest;
 import com.takeneat.services.test.TestConstants;
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 /**
  * @author paoesco
@@ -13,11 +16,19 @@ import org.junit.Test;
 public class ConsumersRestControllerTest extends AbstractWebIntegrationTest {
 
     @Test
-    public void testNewOrder() {
+    public void testNewOrderOK() {
         OrderRequestDTO request = new OrderRequestDTO();
         request.setProductId(TestConstants.LASAGNA_PRODUCT_ID);
-        Long orderId = restTemplate.postForObject(getPathV1()+ "/consumers/" + TestConstants.CONSUMER_ID + "/orders", request, Long.class);
+        Long orderId = restTemplate.postForObject(getPathV1() + "/consumers/" + TestConstants.CONSUMER_ID + "/orders", request, Long.class);
         Assert.assertNotNull(orderId);
+    }
+
+    @Test
+    public void testNewOrderBadRequest() {
+        OrderRequestDTO request = new OrderRequestDTO();
+        ResponseEntity<ExceptionDTO> response = restTemplate.postForEntity(getPathV1() + "/consumers/" + TestConstants.CONSUMER_ID + "/orders", request, ExceptionDTO.class);
+        Assert.assertNotNull(response);
+        Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
 
     @Test

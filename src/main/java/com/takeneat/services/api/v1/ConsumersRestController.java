@@ -8,6 +8,7 @@ import com.takeneat.services.api.v1.dto.OrderRequestDTO;
 import io.swagger.annotations.Api;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +28,7 @@ public class ConsumersRestController {
     private OrdersService ordersService;
 
     @RequestMapping(value = "/{id}/orders", method = RequestMethod.POST)
-    public Long order(@PathVariable("id") Long consumerId, @RequestBody OrderRequestDTO request) {
+    public Long order(@PathVariable("id") Long consumerId, @RequestBody @Valid OrderRequestDTO request) {
         return ordersService.create(consumerId, request.getProductId());
     }
 

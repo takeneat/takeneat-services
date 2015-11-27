@@ -9,6 +9,7 @@ import com.takeneat.services.products.ProductsService;
 import io.swagger.annotations.Api;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,7 +32,7 @@ public class CooksRestController {
     private OrdersService ordersService;
 
     @RequestMapping(value = "/{id}/products", method = RequestMethod.POST)
-    public Long addProduct(@PathVariable("id") Long cookId, @RequestBody CreateProductRequestDTO request) {
+    public Long addProduct(@PathVariable("id") Long cookId, @RequestBody @Valid CreateProductRequestDTO request) {
         return productsService.create(request.getName(), request.getPrice(), cookId);
     }
 

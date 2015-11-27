@@ -1,11 +1,15 @@
 package com.takeneat.services.api.v1;
 
+import com.takeneat.services.api.exceptions.ExceptionDTO;
 import com.takeneat.services.test.AbstractWebIntegrationTest;
 import com.takeneat.services.api.v1.dto.LoginRequestDTO;
 import com.takeneat.services.api.v1.dto.UserDTO;
 import com.takeneat.services.test.TestConstants;
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestClientException;
 
 /**
  * @author paoesco
@@ -29,15 +33,35 @@ public class UsersRestControllerTest extends AbstractWebIntegrationTest {
         request.setEmail("test@takeneat.com");
         request.setPassword("wrongpassword");
         request.setMobileId(TestConstants.MOBILE_ID);
-        Long result = restTemplate.postForObject(getPathV1() + "/users/login", request, Long.class);
-        Assert.assertNull(result);
+        Long id = restTemplate.postForObject(getPathV1() + "/users/login", request, Long.class);
+        Assert.assertNull(id);
+    }
+
+    @Test
+    public void testLoginBadRequestEmail() {
+        LoginRequestDTO request = new LoginRequestDTO();
+        request.setPassword("wrongpassword");
+        request.setMobileId(TestConstants.MOBILE_ID);
+        ResponseEntity<ExceptionDTO> response = restTemplate.postForEntity(getPathV1() + "/users/login", request, ExceptionDTO.class);
+        Assert.assertNotNull(response);
+        Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
+    @Test
+    public void testLoginBadRequestPassword() {
+        LoginRequestDTO request = new LoginRequestDTO();
+        request.setEmail("test@takeneat.com");
+        request.setMobileId(TestConstants.MOBILE_ID);
+        ResponseEntity<ExceptionDTO> response = restTemplate.postForEntity(getPathV1() + "/users/login", request, ExceptionDTO.class);
+        Assert.assertNotNull(response);
+        Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
 
     @Test
     public void testGetUserKO() {
-        UserDTO result = restTemplate.getForObject(getPathV1() + "/users/-1", UserDTO.class);
+        ResponseEntity<UserDTO> result = restTemplate.getForEntity(getPathV1() + "/users/-1", UserDTO.class);
         Assert.assertNotNull(result);
-        Assert.assertNull(result.getId());
+        Assert.assertEquals(HttpStatus.NOT_FOUND, result.getStatusCode());
     }
 
     @Test

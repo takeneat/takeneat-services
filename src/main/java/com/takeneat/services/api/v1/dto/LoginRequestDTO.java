@@ -1,11 +1,15 @@
 package com.takeneat.services.api.v1.dto;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * @author paoesco
  */
 public class LoginRequestDTO {
 
+    @NotNull
     private String email;
+    @NotNull
     private String password;
     private String mobileId;
 

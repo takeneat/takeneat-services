@@ -1,5 +1,6 @@
 package com.takeneat.services.api.v1;
 
+import com.takeneat.services.api.exceptions.NotFoundException;
 import com.takeneat.services.api.utils.ApiConstants;
 import com.takeneat.services.api.v1.dto.LoginRequestDTO;
 import com.takeneat.services.api.v1.dto.UserDTO;
@@ -7,6 +8,7 @@ import com.takeneat.services.model.User;
 import com.takeneat.services.users.UsersService;
 import io.swagger.annotations.Api;
 import java.util.Objects;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,17 +28,17 @@ public class UsersRestController {
     private UsersService usersService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Long login(@RequestBody LoginRequestDTO request) {
+    public Long login(@RequestBody @Valid LoginRequestDTO request) {
         return usersService.login(request.getEmail(), request.getPassword(), request.getMobileId());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public UserDTO get(@PathVariable("id") long userId) {
+    public UserDTO get(@PathVariable("id") long userId) throws NotFoundException {
         User user = usersService.get(userId);
-        UserDTO dto = new UserDTO();
         if (Objects.isNull(user)) {
-            return dto;
+            throw new NotFoundException(userId);
         }
+        UserDTO dto = new UserDTO();
         dto.setEmail(user.getEmail());
         dto.setFirstname(user.getFirstname());
         dto.setId(user.getId());

@@ -1,11 +1,14 @@
 package com.takeneat.services.api.v1;
 
+import com.takeneat.services.api.exceptions.ExceptionDTO;
 import com.takeneat.services.api.v1.dto.CreateProductRequestDTO;
 import com.takeneat.services.api.v1.dto.OrderDTO;
 import com.takeneat.services.test.AbstractWebIntegrationTest;
 import com.takeneat.services.test.TestConstants;
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 /**
  * @author paoesco
@@ -13,12 +16,30 @@ import org.junit.Test;
 public class CooksRestControllerTest extends AbstractWebIntegrationTest {
 
     @Test
-    public void testCreateProduct() {
+    public void testCreateProductOK() {
         CreateProductRequestDTO request = new CreateProductRequestDTO();
         request.setName("Eggs");
         request.setPrice(6.55);
         Long productId = restTemplate.postForObject(getPathV1() + "/cooks/" + TestConstants.COOK_2_ID + "/products", request, Long.class);
         Assert.assertNotNull(productId);
+    }
+
+    @Test
+    public void testCreateProductBadRequestName() {
+        CreateProductRequestDTO request = new CreateProductRequestDTO();
+        request.setPrice(6.55);
+        ResponseEntity<ExceptionDTO> response = restTemplate.postForEntity(getPathV1() + "/cooks/" + TestConstants.COOK_2_ID + "/products", request, ExceptionDTO.class);
+        Assert.assertNotNull(response);
+        Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
+    @Test
+    public void testCreateProductBadRequestPrice() {
+        CreateProductRequestDTO request = new CreateProductRequestDTO();
+        request.setName("Eggs");
+        ResponseEntity<ExceptionDTO> response = restTemplate.postForEntity(getPathV1() + "/cooks/" + TestConstants.COOK_2_ID + "/products", request, ExceptionDTO.class);
+        Assert.assertNotNull(response);
+        Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
 
     @Test
