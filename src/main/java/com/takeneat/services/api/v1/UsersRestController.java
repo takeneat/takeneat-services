@@ -6,6 +6,7 @@ import com.takeneat.services.api.v1.dto.UserDTO;
 import com.takeneat.services.model.User;
 import com.takeneat.services.users.UsersService;
 import io.swagger.annotations.Api;
+import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +34,9 @@ public class UsersRestController {
     public UserDTO get(@PathVariable("id") long userId) {
         User user = usersService.get(userId);
         UserDTO dto = new UserDTO();
+        if (Objects.isNull(user)) {
+            return dto;
+        }
         dto.setEmail(user.getEmail());
         dto.setFirstname(user.getFirstname());
         dto.setId(user.getId());
