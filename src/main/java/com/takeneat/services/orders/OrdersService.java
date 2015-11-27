@@ -31,11 +31,17 @@ public class OrdersService {
         order.setProduct(product);
         order.setConsumer(consumer);
         Order createdOrder = orderDao.save(order);
+
+        // TODO send notification to cook.s
         return createdOrder.getId();
     }
 
-    public List<Order> getOrders(long consumerId) {
+    public List<Order> getCustomerOrders(long consumerId) {
         return orderDao.findByConsumerId(consumerId);
+    }
+
+    public List<Order> getCookOrders(long cookId) {
+        return orderDao.findByCookId(cookId);
     }
 
 }

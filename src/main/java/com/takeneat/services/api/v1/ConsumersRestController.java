@@ -34,7 +34,7 @@ public class ConsumersRestController {
     @RequestMapping(value = "/{id}/orders", method = RequestMethod.GET)
     public List<OrderDTO> getOrders(@PathVariable("id") Long consumerId) {
         return ordersService
-                .getOrders(consumerId)
+                .getCustomerOrders(consumerId)
                 .stream()
                 .map(o -> {
                     OrderDTO dto = new OrderDTO();

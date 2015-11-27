@@ -31,11 +31,23 @@ public class OrdersServiceTest extends AbstractServiceTest {
 
     @Test
     public void testFindByConsumerId() {
-        List<Order> orders = ordersService.getOrders(TestConstants.CONSUMER_2_ID);
+        List<Order> orders = ordersService.getCustomerOrders(TestConstants.CONSUMER_2_ID);
         Assert.assertNotNull(orders);
         Assert.assertEquals(1, orders.size());
         Order order = orders.get(0);
         Assert.assertEquals(TestConstants.CONSUMER_2_ID, order.getConsumer().getId().longValue());
         Assert.assertEquals(TestConstants.SUSHIS_PRODUCT_ID, order.getProduct().getId().longValue());
     }
+    
+    @Test
+    public void testFindByCookId() {
+        List<Order> orders = ordersService.getCookOrders(TestConstants.COOK_ID);
+        Assert.assertNotNull(orders);
+        Assert.assertEquals(1, orders.size());
+        Order order = orders.get(0);
+        Assert.assertEquals(TestConstants.CONSUMER_2_ID, order.getConsumer().getId().longValue());
+        Assert.assertEquals(TestConstants.SUSHIS_PRODUCT_ID, order.getProduct().getId().longValue());
+    }
+    
+    
 }
