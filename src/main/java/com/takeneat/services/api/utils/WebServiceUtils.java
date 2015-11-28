@@ -10,9 +10,12 @@ import java.util.logging.Logger;
 /**
  * @author paoesco
  */
-public class WebServiceUtils {
+public final class WebServiceUtils {
 
     public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
+    private WebServiceUtils() {
+    }
 
     public static String formatDate(Date date) {
         if (date == null) {

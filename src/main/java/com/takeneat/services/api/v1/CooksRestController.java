@@ -1,7 +1,6 @@
 package com.takeneat.services.api.v1;
 
 import com.takeneat.services.api.utils.ApiConstants;
-import com.takeneat.services.api.utils.WebServiceUtils;
 import com.takeneat.services.api.v1.dto.CreateProductRequestDTO;
 import com.takeneat.services.api.v1.dto.OrderDTO;
 import com.takeneat.services.orders.OrdersService;
@@ -41,9 +40,7 @@ public class CooksRestController {
         return ordersService
                 .getCookOrders(cookId)
                 .stream()
-                .map(order -> {
-                    return new OrderDTO(order);
-                })
+                .map(order -> new OrderDTO(order))
                 .collect(Collectors.toList());
     }
 

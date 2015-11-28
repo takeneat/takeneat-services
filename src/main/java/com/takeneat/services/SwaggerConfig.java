@@ -30,13 +30,13 @@ public class SwaggerConfig {
                 .build();
     }
 
-    private Predicate<String> pathsV1() {
+    private static Predicate<String> pathsV1() {
         return or(
                 regex("/api/v1.*")
         );
     }
 
-    private ApiInfo apiInfo(String version) {
+    private static ApiInfo apiInfo(String version) {
         return new ApiInfoBuilder()
                 .title("Takeneat API")
                 .description("Full Takeneat API")
