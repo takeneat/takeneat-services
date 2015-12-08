@@ -8,3 +8,7 @@ deploy:
   app: takeneat-services
   on:
     repo: takeneat/takeneat-services
+before_install:
+  - pip install --user codecov
+after_success:
+  - codecov
