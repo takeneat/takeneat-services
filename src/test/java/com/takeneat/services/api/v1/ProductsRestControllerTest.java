@@ -19,7 +19,7 @@ public class ProductsRestControllerTest extends AbstractWebIntegrationTest {
         Assert.assertNotNull(results);
         Assert.assertEquals(TestConstants.COOK_ID, results.length);
         for (ProductDTO dto : results){
-            Assert.assertEquals("Cook firstname Cook lastname", dto.getCook());
+            Assert.assertEquals("Cook firstname Cook lastname", dto.getCookName());
         }
     }
 }

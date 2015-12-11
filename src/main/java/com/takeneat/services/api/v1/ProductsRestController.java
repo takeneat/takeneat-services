@@ -31,7 +31,8 @@ public class ProductsRestController {
                 .map(p -> {
                     ProductDTO dto = new ProductDTO();
                     dto.setId(p.getId());
-                    dto.setCook(p.getCook().getFirstname() + " " + p.getCook().getLastname());
+                    dto.setCookName(p.getCook().getFirstname() + " " + p.getCook().getLastname());
+                    dto.setCookId(p.getCook().getId());
                     dto.setName(p.getName());
                     dto.setPrice(p.getPrice());
                     dto.setCreationDate(WebServiceUtils.formatDate(p.getCreationDate()));

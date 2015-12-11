@@ -8,7 +8,8 @@ public class ProductDTO {
     private Long id;
     private String name;
     private Double price;
-    private String cook;
+    private String cookName;
+    private Long cookId;
     private String creationDate;
 
     public Long getId() {
@@ -35,12 +36,20 @@ public class ProductDTO {
         this.price = price;
     }
 
-    public String getCook() {
-        return cook;
+    public String getCookName() {
+        return cookName;
     }
 
-    public void setCook(String cook) {
-        this.cook = cook;
+    public void setCookName(String cookName) {
+        this.cookName = cookName;
+    }
+
+    public Long getCookId() {
+        return cookId;
+    }
+
+    public void setCookId(Long cookId) {
+        this.cookId = cookId;
     }
 
     public String getCreationDate() {
