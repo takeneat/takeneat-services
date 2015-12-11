@@ -3,7 +3,6 @@ package com.takeneat.services.users;
 import com.takeneat.services.model.User;
 import com.takeneat.services.test.AbstractServiceTest;
 import com.takeneat.services.test.TestConstants;
-import javax.persistence.EntityNotFoundException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
