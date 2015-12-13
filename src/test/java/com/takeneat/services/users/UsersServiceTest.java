@@ -34,10 +34,10 @@ public class UsersServiceTest extends AbstractServiceTest {
         Assert.assertNull(result);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testUserDoesNotExist() {
-        usersService.login("falsemail@takeneat.com", "test", TestConstants.MOBILE_ID);
-        Assert.fail();
+        Long result = usersService.login("nonexistentuser@takeneat.com", "test", TestConstants.MOBILE_ID);
+        Assert.assertNull(result);
     }
 
     @Test

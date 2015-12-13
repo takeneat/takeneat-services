@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(ApiConstants.PATH_V1 + "/products")
 public class ProductsRestController {
-
+    
     @Autowired
     private ProductsService productsService;
-
+    
     @RequestMapping(value = "/search", method = RequestMethod.POST)
     public List<ProductDTO> search() {
         return productsService
@@ -36,9 +36,10 @@ public class ProductsRestController {
                     dto.setName(p.getName());
                     dto.setPrice(p.getPrice());
                     dto.setCreationDate(WebServiceUtils.formatDate(p.getCreationDate()));
+                    dto.setDistance(String.valueOf(Math.random() * 100));
                     return dto;
                 }).collect(Collectors.toList());
-
+        
     }
-
+    
 }

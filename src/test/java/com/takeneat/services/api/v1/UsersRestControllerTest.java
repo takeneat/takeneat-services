@@ -32,8 +32,20 @@ public class UsersRestControllerTest extends AbstractWebIntegrationTest {
         request.setEmail("test@takeneat.com");
         request.setPassword("wrongpassword");
         request.setMobileId(TestConstants.MOBILE_ID);
-        Long id = restTemplate.postForObject(getPathV1() + "/users/login", request, Long.class);
-        Assert.assertNull(id);
+        ResponseEntity<ExceptionDTO> response = restTemplate.postForEntity(getPathV1() + "/users/login", request, ExceptionDTO.class);
+        Assert.assertNotNull(response);
+        Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
+
+    @Test
+    public void testLoginBadRequesWrongEmail() {
+        LoginRequestDTO request = new LoginRequestDTO();
+        request.setPassword("email@notexists.com");
+        request.setPassword("wrongpassword");
+        request.setMobileId(TestConstants.MOBILE_ID);
+        ResponseEntity<ExceptionDTO> response = restTemplate.postForEntity(getPathV1() + "/users/login", request, ExceptionDTO.class);
+        Assert.assertNotNull(response);
+        Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
 
     @Test

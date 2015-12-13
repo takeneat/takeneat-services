@@ -11,6 +11,7 @@ public class ProductDTO {
     private String cookName;
     private Long cookId;
     private String creationDate;
+    private String distance;
 
     public Long getId() {
         return id;
@@ -58,6 +59,14 @@ public class ProductDTO {
 
     public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
     }
 
 }

@@ -24,13 +24,13 @@ public class UsersService {
      * @param email : email of the user who tries to log in
      * @param password : raw password
      * @param mobileId : Id of the mobile. Store it if successful login.
-     * @return
+     * @return id of the logged user. null if credentials are not recognized.
      */
     @Transactional
     public Long login(String email, String password, String mobileId) {
         User user = userDao.findByEmail(email);
         if (user == null) {
-            throw new IllegalArgumentException("User does not exist");
+            return null;
         }
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         if (passwordEncoder.matches(password, user.getPassword())) {
