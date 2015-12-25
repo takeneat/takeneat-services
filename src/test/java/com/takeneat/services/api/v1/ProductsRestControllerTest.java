@@ -1,6 +1,5 @@
 package com.takeneat.services.api.v1;
 
-import com.takeneat.services.api.utils.WebServiceUtils;
 import com.takeneat.services.api.v1.dto.ProductDTO;
 import com.takeneat.services.test.AbstractWebIntegrationTest;
 import com.takeneat.services.test.TestConstants;

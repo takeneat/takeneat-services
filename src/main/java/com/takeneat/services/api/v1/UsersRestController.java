@@ -9,8 +9,6 @@ import com.takeneat.services.model.User;
 import com.takeneat.services.users.UsersService;
 import io.swagger.annotations.Api;
 import java.util.Objects;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
