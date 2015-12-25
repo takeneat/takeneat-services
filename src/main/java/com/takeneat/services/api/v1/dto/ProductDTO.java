@@ -1,5 +1,8 @@
 package com.takeneat.services.api.v1.dto;
 
+import com.takeneat.services.api.utils.WebServiceUtils;
+import com.takeneat.services.model.Product;
+
 /**
  * @author paoesco
  */
@@ -12,6 +15,19 @@ public class ProductDTO {
     private Long cookId;
     private String creationDate;
     private String distance;
+
+    protected ProductDTO() {
+    }
+
+    public ProductDTO(Product p) {
+        this.id = p.getId();
+        this.cookName = p.getCook().getFirstname() + " " + p.getCook().getLastname();
+        this.cookId = p.getCook().getId();
+        this.name = p.getName();
+        this.price = p.getPrice();
+        this.creationDate = WebServiceUtils.formatDate(p.getCreationDate());
+        this.distance = String.valueOf(Math.random() * 100);
+    }
 
     public Long getId() {
         return id;
