@@ -42,8 +42,8 @@ public class SwaggerConfig {
                 .description("Full Takeneat API")
                 .termsOfServiceUrl("http://springfox.io")
                 .contact("takeneat")
-                .license("Apache License Version 2.0")
-                .licenseUrl("https://github.com/springfox/springfox/blob/master/LICENSE")
+                //.license("Apache License Version 2.0")
+                //.licenseUrl("https://github.com/springfox/springfox/blob/master/LICENSE")
                 .version(version)
                 .build();
     }
