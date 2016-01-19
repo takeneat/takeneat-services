@@ -1,7 +1,7 @@
 package com.takeneat.services.api.v1.dto;
 
-import com.takeneat.services.api.utils.WebServiceUtils;
 import com.takeneat.services.model.Product;
+import java.util.Date;
 
 /**
  * @author paoesco
@@ -13,7 +13,7 @@ public class ProductDTO {
     private Double price;
     private String cookName;
     private Long cookId;
-    private String creationDate;
+    private Date creationDate;
     private String distance;
 
     protected ProductDTO() {
@@ -25,8 +25,8 @@ public class ProductDTO {
         this.cookId = p.getCook().getId();
         this.name = p.getName();
         this.price = p.getPrice();
-        this.creationDate = WebServiceUtils.formatDate(p.getCreationDate());
-        this.distance = String.valueOf(Math.random() * 100);
+        this.creationDate = p.getCreationDate();
+        this.distance = String.valueOf(Math.random() * 300);
     }
 
     public Long getId() {
@@ -69,11 +69,11 @@ public class ProductDTO {
         this.cookId = cookId;
     }
 
-    public String getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(String creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 
