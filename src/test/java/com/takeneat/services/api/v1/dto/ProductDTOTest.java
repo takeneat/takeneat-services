@@ -30,7 +30,7 @@ public class ProductDTOTest {
         
         Assert.assertEquals(p.getCook().getId(), result.getCookId());
         Assert.assertEquals(p.getCook().getFullname(), result.getCookName());
-        Assert.assertEquals(WebServiceUtils.formatDate(p.getCreationDate()), result.getCreationDate());
+        Assert.assertEquals(p.getCreationDate(), result.getCreationDate());
         Assert.assertEquals(p.getId(), result.getId());
         Assert.assertEquals(p.getName(), result.getName());
         Assert.assertEquals(p.getPrice(), result.getPrice());

@@ -3,6 +3,7 @@ package com.takeneat.services.api.v1;
 import com.takeneat.services.api.v1.dto.ProductDTO;
 import com.takeneat.services.test.AbstractWebIntegrationTest;
 import com.takeneat.services.test.TestConstants;
+import java.text.SimpleDateFormat;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -30,7 +31,8 @@ public class ProductsRestControllerTest extends AbstractWebIntegrationTest {
         Assert.assertEquals(TestConstants.LASAGNA_PRODUCT_ID, result.getId().longValue());
         Assert.assertEquals(TestConstants.COOK_ID, result.getCookId().longValue());
         Assert.assertEquals("Cook firstname Cook lastname", result.getCookName());
-        Assert.assertEquals("2015-01-01 01:00:00", result.getCreationDate());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Assert.assertEquals("2015-01-01 01:00:00", sdf.format(result.getCreationDate()));
         Assert.assertNotNull(result.getDistance());
         Assert.assertEquals("Lasagna", result.getName());
         Assert.assertEquals(5.50, result.getPrice(), 0);
